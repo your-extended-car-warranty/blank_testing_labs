@@ -1,0 +1,23 @@
+<!--
+Tyler Khin
+book_list.html
+April 17th, 2025
+
+The 'read' part of CRUD; displays a book's info on one page
+-->
+
+{% extends "base.html" %}
+
+{% block title %}{{ book.title }}{% endblock %}
+
+{% block content %}
+<h1>📖 {{ book.title }}</h1>
+
+<h2><em>By {{ book.author }}</em></h3>
+<h3>Genre: {{ book.genre or "Not Listed" }}</h3>
+<h3>Book Status: {{ book.status.capitalize() }}</h3>
+<h3>Rating: {{ book.rating or '--'}}/5</h3>
+<p>{{ book.notes }}</p>
+
+<p><a href="/">⬅ Back to Book List</a></p>
+{% endblock %}

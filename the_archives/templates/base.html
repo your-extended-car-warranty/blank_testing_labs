@@ -1,0 +1,24 @@
+<!--
+Tyler Khin
+base.html
+April 17th, 2025
+
+The base template for the other templates; every other template extends this one
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='book.png') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+
+<body>
+{% block content %}
+
+{% endblock %}
+</body>
+</html>

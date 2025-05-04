@@ -1,0 +1,39 @@
+<!--
+Brian Balderas-Ortega, Tyler Khin
+add.html
+April 17th, 2025
+
+The 'create' part of CRUD; lets users add a new book to
+their list either manually, or using the API search
+-->
+
+{% extends "base.html" %}
+
+{% block title %}Add Book{% endblock %}
+
+{% block content %}
+<h1>➕ Add a New Book</h1>
+  
+<div hidden>
+  <form id="addBookForm" method="POST">
+    <input type="text" name="title" placeholder="Title" id="title" required>
+    <input type="text" name="author" placeholder="Author" id="author" required>
+    <input type="text" name="genre" placeholder="Genre" id="genre">
+    <select name="status" id="status" required>
+      <option value="unread">Unread</option>
+      <option value="read">Read</option>
+    </select>
+    <input type="text" name="rating" placeholder="Rating" id="rating" max="5" min="0" step="0.1">
+    <textarea name="notes" placeholder="Notes" id="notes"></textarea>
+    <button id="addBookButton" type="submit">Add Book</button>
+  </form>
+</div>
+
+  <input type="text" id="searchQuery" placeholder="Search books...">
+  <button onclick="searchGoogleBooks()">Search</button>
+  
+  <div id="searchResults"></div>
+
+<p><a href="/">⬅ Back to Book List</a></p>
+
+{% endblock %}

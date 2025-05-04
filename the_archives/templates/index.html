@@ -1,0 +1,53 @@
+<!--
+Brian Balderas-Ortega, Tyler Khin
+index.html
+April 17th, 2025
+
+The homepage that displays a simplified version of each book's info, the the option to add a new book,
+or for each individual book, mark it as read, edit the info, or delete the book.
+-->
+
+{% extends "base.html" %}
+
+{% block title %}Book Tracker{% endblock %}
+
+{% block content %}
+<h1>📚 Book Tracker</h1>
+
+<nav>
+    <button onclick="addBook()">Add Book</button>
+</nav>
+
+{% if books==[] %}
+<h2>Add a book to begin!</h2>
+{% else %}
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Read</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody id="book-table">
+        {% for book in books %}
+        <tr id="book-{{ book[0] }}" class="{{ 'read' if book[3] else '' }}">
+            <td>{{ book[1] }}</td>
+            <td>{{ book[2] }}</td>
+            <td>{{ 'Yes' if book[3] else 'No' }}</td>
+            <td>
+                {% if not book[3] %}
+                <button onclick="markAsRead({{ book[0] }})">Mark as Read</button>
+                {% endif %}
+                <button onclick="viewBook({{ book[0] }})">View</button>
+                <button onclick="editBook({{ book[0] }})">Edit</button>
+                <button onclick="deleteBook({{ book[0] }})">Delete</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+{% endblock %}
